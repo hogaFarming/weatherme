@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Settings extends Component {
   handleAddCity() {
@@ -19,6 +20,7 @@ class Settings extends Component {
     });
     return (
       <div className="settings">
+        <Link to="/">完成</Link>
         <div>
           <input type="text" ref="input" placeholder="添加城市"/>
           <button onClick={this.handleAddCity.bind(this)}>add</button>

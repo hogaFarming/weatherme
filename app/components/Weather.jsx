@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Weather extends Component {
   onCityChange() {
@@ -13,6 +14,7 @@ class Weather extends Component {
     });
     return (
       <div className="weather">
+        <Link to="/settings">设置</Link>
         <h3>{weather.tmp}℃</h3>
         <select ref="select"
           value={settings.currentCity.id}

@@ -32,5 +32,5 @@ function getCity(id) {
   var matched = require('../city_info.json')['city_info'].find((item) => {
     return item.id === id;
   });
-  return { id: matched.id, name: matched.name };
+  return { id: matched.id, name: matched.city };
 }

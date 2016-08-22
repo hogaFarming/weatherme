@@ -12,10 +12,18 @@ let tray;
 function installExtensions() {
   const installer = require('electron-devtools-installer');
   return Promise.all([
-    installer.default(installer['REACT_DEVELOPER_TOOLS']),
-    installer.default(installer['REDUX_DEVTOOLS'])
+    installer.default(installer['REACT_DEVELOPER_TOOLS'], true),
+    installer.default(installer['REDUX_DEVTOOLS'], true)
   ]).then((name) => console.log(`Added Extension:  ${name}`))
     .catch((err) => console.log('An error occurred: ', err));
+}
+function installExtensionsMunally() {
+  const dir = 'C:/Users/hoga/AppData/Local/Google/Chrome/User Data/Default/Extensions';
+  const reactTool = dir + '/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0';
+  const reduxTool = dir + '/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0';
+  BrowserWindow.addDevToolsExtension(reactTool);
+  BrowserWindow.addDevToolsExtension(reduxTool);
+  return Promise.resolve();
 }
 
 function createWindow() {
@@ -52,7 +60,7 @@ function createTray() {
 
 app.on('ready', () => {
   createTray();
-  installExtensions().then(createWindow);
+  installExtensionsMunally().then(createWindow);
 });
 
 // Quit when all windows are closed.
