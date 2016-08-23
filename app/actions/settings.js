@@ -1,8 +1,9 @@
 export const ADD_CITY = 'ADD_CITY';
-export function addCity(id) {
+export function addCity(name) {
+  const city = getCity(name);
   return {
     type: ADD_CITY,
-    cityId: id
+    city: city
   };
 }
 
@@ -12,4 +13,11 @@ export function setCity(id) {
     type: SET_CITY,
     cityId: id
   };
+}
+
+function getCity(name) {
+  const matched = require('../city_info.json')['city_info'].find((item) => {
+    return item.city === name;
+  });
+  return matched ? { id: matched.id, name: matched.city } : null;
 }

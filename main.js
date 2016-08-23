@@ -18,11 +18,11 @@ function installExtensions() {
     .catch((err) => console.log('An error occurred: ', err));
 }
 function installExtensionsMunally() {
-  const dir = 'C:/Users/hoga/AppData/Local/Google/Chrome/User Data/Default/Extensions';
-  const reactTool = dir + '/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0';
-  const reduxTool = dir + '/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0';
-  BrowserWindow.addDevToolsExtension(reactTool);
-  BrowserWindow.addDevToolsExtension(reduxTool);
+  // const dir = 'C:/Users/hoga/AppData/Local/Google/Chrome/User Data/Default/Extensions';
+  // const reactTool = dir + '/fmkadmapgofadopljbjfkapdkoienihi/0.15.1_0';
+  // const reduxTool = dir + '/lmhkpmbekcpmknklioeibfkpmmfibljd/2.5.1.2_0';
+  // BrowserWindow.addDevToolsExtension(reactTool);
+  // BrowserWindow.addDevToolsExtension(reduxTool);
   return Promise.resolve();
 }
 

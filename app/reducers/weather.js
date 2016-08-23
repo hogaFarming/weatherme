@@ -4,12 +4,18 @@ export default function weather(state, action) {
   switch (action.type)
   {
   case weatherActions.REQUEST_WEATHER:
-    var result = require('../mock/weather')[action.cityId];
+    return Object.assign({}, state, {
+      isFetching: true
+    });
+  case weatherActions.GOT_WEATHER:
+    return Object.assign({
+      isFetching: false,
+      error: ''
+    }, state, action.weather);
+  case weatherActions.GOT_WEATHER_ERROR:
     return {
-      cond: result.cond.txt,
-      tmp: result.tmp,
-      wind: result.dir,
-      hum: result.hum
+      isFetching: false,
+      error: action.error || '数据无效'
     };
   default:
     return state;

@@ -2,26 +2,36 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { Router, Route, IndexRoute, hashHistory }  from 'react-router';
 
-import * as settingsActions from './actions/settings';
-import * as weatherActions from './actions/weather';
+// store
 import configureStore from './store/configureStore';
+
+// containers
 import WeatherPage from './containers/WeatherPage';
 import SettingsPage from './containers/SettingsPage';
 import App from './containers/App';
-import { Router, Route, IndexRoute, hashHistory }  from 'react-router';
 
+// action
+import { fetchWeather } from './actions/weather';
+
+// import css
 import './css/main.css';
 
 const defaultState = {
   weather: {},
   settings: {
-    currentCity: '',
-    cities: []
+    currentCity: 'CN101280101',
+    cities: [
+      { id: 'CN101280101', name: '广州' }
+    ]
   }
 };
 const store = configureStore(defaultState);
+
 const history = syncHistoryWithStore(hashHistory, store);
+
+store.dispatch(fetchWeather('CN101280101'));
 
 render(
   <Provider store={store}>
@@ -34,7 +44,3 @@ render(
   </Provider>,
   document.getElementById('root')
 );
-
-store.dispatch(settingsActions.addCity('CN101280101'));
-store.dispatch(settingsActions.setCity('CN101280101'));
-store.dispatch(weatherActions.requestWeacher('CN101280101'));
