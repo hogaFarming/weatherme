@@ -27,6 +27,7 @@ const defaultState = {
     ]
   }
 };
+
 const store = configureStore(defaultState);
 
 const history = syncHistoryWithStore(hashHistory, store);
